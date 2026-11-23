@@ -20,6 +20,11 @@ def main() -> None:
     with open("/output/entry.txt", "w", encoding="utf-8", newline="") as f:
         f.write(EMOJI)
 
+    # Read-back verification: the file on disk must be exactly the emoji.
+    with open("/output/entry.txt", "r", encoding="utf-8", newline="") as f:
+        written = f.read()
+    assert written == EMOJI, "entry.txt does not match the emoji"
+
 
 if __name__ == "__main__":
     main()
